@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiInputTest.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiInputTest"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ControlTemplate x:Key="NumberKeyboard">
+                <Grid>
+                    <BoxView Color="Green" />
+                    <Label
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Rotation="-30"
+                        Text="Number Keyboard"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
+            </ControlTemplate>
+            <ControlTemplate x:Key="CalculatorKeyboard">
+                <Grid>
+                    <BoxView Color="Orange" />
+                    <Label
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Rotation="-30"
+                        Text="Calculator Keyboard"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <mct:DockLayout>
+        <Grid
+            x:Name="bottomGrid"
+            mct:DockLayout.DockPosition="Bottom"
+            HeightRequest="200"
+            IsVisible="False">
+            <ContentView x:Name="keyboardContentView" />
+        </Grid>
+
+        <ScrollView>
+            <VerticalStackLayout Padding="30,30,30,200" Spacing="25">
+
+                <Label Text="Text input with no Keyboard" />
+
+                <Border Padding="2" StrokeShape="RoundRectangle 5">
+                    <local:InputBox InputBoxKeyboard="None" Text="Hello" />
+                </Border>
+
+                <Label Text="Text input with Number Keyboard" />
+
+                <Border Padding="2" StrokeShape="RoundRectangle 5">
+                    <local:InputBox InputBoxKeyboard="Number" Text="Hello" />
+                </Border>
+
+                <Label Text="Text input with Calculator Keyboard" />
+
+                <Border Padding="2" StrokeShape="RoundRectangle 5">
+                    <local:InputBox InputBoxKeyboard="Calculator" Text="Hello" />
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </mct:DockLayout>
+
+</ContentPage>
