@@ -39,16 +39,18 @@ public partial class InputBox : Entry
 	/// <summary>
 	/// Gets the clip geometry that removes the Entry's border and underline.
 	/// </summary>
-	public RectangleGeometry ClipGeometry =>
-		Width >= 8 && Height >= 24
+	public Geometry? ClipGeometry =>
 #if WINDOWS
+		Width >= 8 && Height >= 24
         ? new RectangleGeometry() {Rect = new Rect(4, 6, Width - 8, Height - 12) }
-#elif ANDROID
-		? new RectangleGeometry() { Rect = new Rect(4, 12, Width - 8, Height - 24) }
-#else
-        ? new RectangleGeometry() { Rect = new Rect(0, 0, Width, Height) }
-#endif
 		: new RectangleGeometry() { Rect = new Rect(0, 0, 100, 32) };
+#elif ANDROID
+		Width >= 8 && Height >= 24
+		? new RectangleGeometry() { Rect = new Rect(4, 12, Width - 8, Height - 24) }
+		: new RectangleGeometry() { Rect = new Rect(0, 0, 100, 32) };
+#else
+        null;
+#endif
 
 	/// <summary>
 	/// Initializes a new instance of the <see cref="InputBox"/> class.

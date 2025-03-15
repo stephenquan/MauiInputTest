@@ -49,6 +49,18 @@
 
                 <Label Text="Text input with no Keyboard" />
 
+                <Border Padding="2">
+                    <Entry Text="Hello World (Plain)" Keyboard="Plain" />
+                </Border>
+
+                <Border Padding="2">
+                    <Entry Text="Hello World (Text)" Keyboard="Text" />
+                </Border>
+
+                <Border Padding="2">
+                    <Entry Text="Hello World (Numeric)" Keyboard="Numeric" />
+                </Border>
+
                 <Border Padding="2" StrokeShape="RoundRectangle 5">
                     <local:InputBox InputBoxKeyboard="None" Text="Hello" />
                 </Border>

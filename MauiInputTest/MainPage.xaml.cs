@@ -66,22 +66,26 @@ public partial class MainPage : ContentPage
 			case InputBoxKeyboard.Number:
 				bottomGrid.IsVisible = true;
 				keyboardContentView.ControlTemplate = (ControlTemplate)Resources["NumberKeyboard"];
+#if ANDROID
 				this.Dispatcher.Dispatch(async () =>
 				{
 					await KeyboardExtensions.HideKeyboardAsync(inputBox!);
 					await Task.Delay(50);
 					await KeyboardExtensions.HideKeyboardAsync(inputBox!);
 				});
+#endif
 				break;
 			case InputBoxKeyboard.Calculator:
 				bottomGrid.IsVisible = true;
 				keyboardContentView.ControlTemplate = (ControlTemplate)Resources["CalculatorKeyboard"];
+#if ANDROID
 				this.Dispatcher.Dispatch(async () =>
 				{
 					await KeyboardExtensions.HideKeyboardAsync(inputBox!);
 					await Task.Delay(50);
 					await KeyboardExtensions.HideKeyboardAsync(inputBox!);
 				});
+#endif
 				break;
 		}
 	}
